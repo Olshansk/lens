@@ -6,14 +6,67 @@
 //  Copyright (c) 2013 Daniel Olshansky. All rights reserved.
 //
 
+
+#import <MessageUI/MessageUI.h>
+
 #import "AppDelegate.h"
+#import "ConversationViewController.h"
+#import "ConversationsTableViewController.h"
+#import "AccountCreationController.h"
+#import "PersonalSettingsViewController.h"
+#import "DataSingleton.h"
+#import "Conversation.h"
+
+#define FIRST_TIME_KEY @"firstTime"
+#define CONVO_ID_KEY @"conversation_id"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    [self updateConversationsWithLaunchOptions:launchOptions];
+ 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+//    [self.window setRootViewController:[[ConversationsTableViewController alloc] initWithStyle:UITableViewStylePlain]];
+    
+    ConversationsTableViewController * temp = [[ConversationsTableViewController alloc] init];
+//    [temp setEdgesForExtendedLayout:UIExtendedEdgeNone];
+    
+    PersonalSettingsViewController *temp2 = [[PersonalSettingsViewController alloc] init];
+    
+    ConversationViewController *temp3 = [[ConversationViewController alloc] init];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:temp3];
+//    [navController setPreferredContentSize:CGSizeMake(self.window.frame.size.height, self.window.frame.size.height - 64)];
+//    [navController setExtendedLayoutIncludesOpaqueBars:NO];
+//    [navController setEdgesForExtendedLayout:UIExtendedEdgeBottom];
+//    [[navController navigationBar] setTranslucent:NO];
+    [[navController navigationBar] setTintColor:[UIColor redColor]];
+    
+    
+//    [navController set]
+//    [self.window setRootViewController:[[AccountCreationController alloc]init]];
+//        [self.window setRootViewController:temp];
+    self.window.tintColor = [UIColor whiteColor];
+//    [navController navigationBar] setTr
+    
+    UIImage *navigationBarBackground = [[UIImage imageNamed:@"TransparentBackground.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    
+    [[navController navigationBar] setBackgroundImage:navigationBarBackground forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    
+//        [self.window setRootViewController:navController];
+    
+    [self.window setRootViewController:navController];
+    
+//    [self.window setRootViewController:[[ConversationsTableViewController alloc] init]];
+    [navController navigationBar].barTintColor = [UIColor clearColor];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -44,6 +97,81 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+    [self addMessagesFromRemoteNotification:userInfo updateUI:YES];
+    
+    
+}
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+	NSString *newToken = [deviceToken description];
+	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [[DataSingleton sharedSingleton] setRemoteNotificationToken:newToken];
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)updateConversationsWithLaunchOptions:(NSDictionary *)launchOptions
+{
+    if (launchOptions != nil)
+	{
+		NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+            [self addMessagesFromRemoteNotification:launchOptions updateUI:NO];
+		}
+	}
+}
+
+- (void)addMessagesFromRemoteNotification:(NSDictionary*)dict updateUI:(BOOL)update
+{
+    NSString *convoID =  [dict objectForKey:@"conversation_id"];
+    NSString *url =  [dict objectForKey:@"url"];
+    NSString *msg = [[dict objectForKey:@"aps"] objectForKey:@"alert"]; // [userInfo valueForKey:@"aps.alert"]
+    /*
+    //Receving message
+    //1. Get a notification with convo ID
+    //2. GET /conversations/convo_id.json?auth_token=auth_token&phone=<phone_number>&last_message_id=<id>
+    //3. - id with last message
+         - array of messages
+         - array of urls
+    
+    
+    //Sending message
+    //1. POST /conversations/convo_id/messages.json?auth_token=auth_token
+    //2.
+    //3.
+   */
+    NSString *convo = [dict objectForKey:CONVO_ID_KEY];
+    
+    for (Conversation *convo in [[DataSingleton sharedSingleton] conversations]) {
+        if ([[convo convoID] isEqualToString:convo]) {
+            
+//            [convoViewController setConversation:convo];
+//            [[self navigationController] pushViewController:convoViewController animated:YES];
+//            return;
+        }
+    }
+}
+
+- (UIViewController*)getRootViewController
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    BOOL isFirstTime = [prefs boolForKey:FIRST_TIME_KEY];
+    if (isFirstTime) {
+        [prefs setBool:YES forKey:FIRST_TIME_KEY];
+        return [[AccountCreationController alloc] init];
+    } else {
+        return [[ConversationsTableViewController alloc] init];
+    }
 }
 
 @end
