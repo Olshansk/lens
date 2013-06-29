@@ -36,19 +36,17 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
             NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
             
             if (![prefs boolForKey:isFirstSingletonLoadKey]) {
+                
                 sharedSingleton = [[DataSingleton alloc] init];
+                
                 [sharedSingleton setOpenUDID:[OpenUDID value]];
-                
-                Person *person = [[Person alloc] init];
-                [person setActivePhoneNumbers:[[NSMutableArray alloc] initWithArray:@[@"4157355911"]]];//sam: 5195049672 ronen:4158252307
-                [person setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
-                [person setUserName:@"Daniel Olshansky"];
-                [sharedSingleton setUser:person];
-                [prefs setBool:YES forKey:isFirstSingletonLoadKey];
-                
                 [sharedSingleton setBackground:@"Alamo.png"];
+                [[sharedSingleton user] setActivePhoneNumbers:[[NSMutableArray alloc] initWithArray:@[@"4157355911"]]];//sam: 5195049672 ronen:4158252307
+                [[sharedSingleton user] setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
+                [[sharedSingleton user] setUserName:@"Daniel Olshansky"];
+                
+                [prefs setBool:YES forKey:isFirstSingletonLoadKey];
             } else {
-                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                 NSData *data = [prefs objectForKey:SingletonKey];
                 sharedSingleton = (DataSingleton *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
             }
@@ -64,6 +62,7 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
     {
         _conversations = [[NSMutableArray alloc] init];
         _usersWithAccounts = [[NSMutableArray alloc] init];
+        _user = [[Person alloc] init];
     }
     return self;
 }

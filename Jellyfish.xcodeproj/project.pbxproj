@@ -19,7 +19,6 @@
 		7204C4A8177670F100B01706 /* AccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7204C4A7177670F100B01706 /* AccountTableViewCell.m */; };
 		7204C4AA1776900600B01706 /* UpdateProfilePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 7204C4A91776900600B01706 /* UpdateProfilePhoto.png */; };
 		7217832D176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m in Sources */ = {isa = PBXBuildFile; fileRef = 7217832C176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m */; };
-		72178332176E7EA500995E2F /* SimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 72178331176E7EA500995E2F /* SimpleHTTPRequest.m */; };
 		7222BC831753EF4100F163AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222BC821753EF4100F163AC /* UIKit.framework */; };
 		7222BC851753EF4100F163AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222BC841753EF4100F163AC /* Foundation.framework */; };
 		7222BC871753EF4100F163AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7222BC861753EF4100F163AC /* CoreGraphics.framework */; };
@@ -89,8 +88,6 @@
 		7204C4A91776900600B01706 /* UpdateProfilePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpdateProfilePhoto.png; sourceTree = "<group>"; };
 		7217832B176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SaveAndLoadCustomMutableArrays.h"; sourceTree = "<group>"; };
 		7217832C176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SaveAndLoadCustomMutableArrays.m"; sourceTree = "<group>"; };
-		72178330176E7EA500995E2F /* SimpleHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleHTTPRequest.h; sourceTree = "<group>"; };
-		72178331176E7EA500995E2F /* SimpleHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleHTTPRequest.m; sourceTree = "<group>"; };
 		7222BC7F1753EF4100F163AC /* Jellyfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jellyfish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7222BC821753EF4100F163AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7222BC841753EF4100F163AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,15 +201,6 @@
 			name = Backgrounds;
 			sourceTree = "<group>";
 		};
-		72178333176E7EA800995E2F /* SimpleHTTPRequest */ = {
-			isa = PBXGroup;
-			children = (
-				72178330176E7EA500995E2F /* SimpleHTTPRequest.h */,
-				72178331176E7EA500995E2F /* SimpleHTTPRequest.m */,
-			);
-			name = SimpleHTTPRequest;
-			sourceTree = "<group>";
-		};
 		7222BC761753EF4000F163AC = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +240,6 @@
 		7222BC881753EF4100F163AC /* PictoMessage */ = {
 			isa = PBXGroup;
 			children = (
-				72178333176E7EA800995E2F /* SimpleHTTPRequest */,
 				72AB3E3D17699E6E001907F0 /* wolf.jpg */,
 				725E6DBC17641E9700928F4B /* OpenUDID */,
 				72CAEA0C175C083800ECCFF7 /* Categories */,
@@ -496,7 +483,6 @@
 				7204C4A8177670F100B01706 /* AccountTableViewCell.m in Sources */,
 				72CAE5A1175AA71D00ECCFF7 /* ConversationsTableViewController.m in Sources */,
 				72CAEA05175BF33700ECCFF7 /* Conversation.m in Sources */,
-				72178332176E7EA500995E2F /* SimpleHTTPRequest.m in Sources */,
 				72CAEA08175BF3AC00ECCFF7 /* Person.m in Sources */,
 				72CAEA0B175C053C00ECCFF7 /* AccountCreationController.m in Sources */,
 				72CAEA0F175C085100ECCFF7 /* NSURL+Parameters.m in Sources */,

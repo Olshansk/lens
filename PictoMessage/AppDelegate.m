@@ -26,49 +26,28 @@
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
-    [self updateConversationsWithLaunchOptions:launchOptions];
- 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    [self.window setRootViewController:[[ConversationsTableViewController alloc] initWithStyle:UITableViewStylePlain]];
-    
-    ConversationsTableViewController * temp = [[ConversationsTableViewController alloc] init];
-//    [temp setEdgesForExtendedLayout:UIExtendedEdgeNone];
-    
-    PersonalSettingsViewController *temp2 = [[PersonalSettingsViewController alloc] init];
-    
-    ConversationViewController *temp3 = [[ConversationViewController alloc] init];
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:temp3];
-//    [navController setPreferredContentSize:CGSizeMake(self.window.frame.size.height, self.window.frame.size.height - 64)];
-//    [navController setExtendedLayoutIncludesOpaqueBars:NO];
-//    [navController setEdgesForExtendedLayout:UIExtendedEdgeBottom];
-//    [[navController navigationBar] setTranslucent:NO];
-    [[navController navigationBar] setTintColor:[UIColor redColor]];
+     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
-//    [navController set]
-//    [self.window setRootViewController:[[AccountCreationController alloc]init]];
-//        [self.window setRootViewController:temp];
-    self.window.tintColor = [UIColor whiteColor];
-//    [navController navigationBar] setTr
-    
+    ConversationsTableViewController * temp = [[ConversationsTableViewController alloc] init];
+    PersonalSettingsViewController *temp2 = [[PersonalSettingsViewController alloc] init];
+    ConversationViewController *temp3 = [[ConversationViewController alloc] init];
+  
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[self getRootViewController]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:temp];
+    [[navController navigationBar] setTintColor:[UIColor whiteColor]];
+
     UIImage *navigationBarBackground = [[UIImage imageNamed:@"TransparentBackground.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-    
     [[navController navigationBar] setBackgroundImage:navigationBarBackground forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+
+    [self updateConversationsWithLaunchOptions:launchOptions];
     
-    
-//        [self.window setRootViewController:navController];
-    
+    [self.window setTintColor:[UIColor whiteColor]];
     [self.window setRootViewController:navController];
-    
-//    [self.window setRootViewController:[[ConversationsTableViewController alloc] init]];
-    [navController navigationBar].barTintColor = [UIColor clearColor];
-    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -102,8 +81,6 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
     [self addMessagesFromRemoteNotification:userInfo updateUI:YES];
-    
-    
 }
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {

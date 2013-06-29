@@ -28,7 +28,7 @@
 #import "NetworkProtocol.h"
 #import "DataSingleton.h"
 #import "Person.h"
-#import "SimpleHTTPRequest.h"
+
 @implementation ConversationViewController
 {
     CaptureSessionManager *captureManager;
@@ -58,9 +58,9 @@
     [backgroundView setFrame:CGRectMake(-30, -30, self.view.frame.size.width + 30*2, self.view.frame.size.height + 30*2)];
         
     captureManager = [[CaptureSessionManager alloc] init];
-//    [captureManager addVideoInput];
-//    [captureManager addStillImageOutput];
-//    [[captureManager captureSession] startRunning];
+    [captureManager addVideoInput];
+    [captureManager addStillImageOutput];
+    [[captureManager captureSession] startRunning];
     
     accessoryView = [[KeyboardAccessoryTextView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - ACCESSORY_VIEW_HEIGHT, self.view.frame.size.width, ACCESSORY_VIEW_HEIGHT)];
     [accessoryView setDelegate:self];
@@ -111,7 +111,7 @@
 
 -(void)temp1
 {
-//    [captureManager captureStillImage];
+    [captureManager captureStillImage];
     
     Message* message = [[Message alloc] init];
 //	message.senderName = @"me";

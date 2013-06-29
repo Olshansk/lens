@@ -42,15 +42,13 @@
 {
     [super viewDidLoad];
 
+    [self setTitle:PAGE_TITLE];
+    
     contactsWithAccounts = [[NSMutableArray alloc] init];
     contactsWithoutAccounts = [[NSMutableArray alloc] init];
-    
-//    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, PORTRAIT_STATUS_NAV_BAR_HEIGHT, self.view.frame.size.width, SEARCH_BAR_HEIGHT)];
-//    [searchBar setBackgroundColor:[UIColor clearColor]];
 
     UITextField *searchBar = [[UITextField alloc] initWithFrame:CGRectMake(0, PORTRAIT_STATUS_NAV_BAR_HEIGHT, self.view.frame.size.width, SEARCH_BAR_HEIGHT)];
     [searchBar setKeyboardType:UIKeyboardTypeNamePhonePad];
-//    [searchBar setKeyboardDismissMode:UIScrollViewKeyboardDismissModeOnDrag];
     [searchBar setPlaceholder:SEARCH_PLACEHOLDER_TEXT];
     [searchBar setBackgroundColor:[UIColor whiteColor]];
     
@@ -59,21 +57,9 @@
     [tableView setDelegate:self];
     [tableView setBackgroundColor:[UIColor clearColor]];
     
-//    [self setEdgesForExtendedLayout:UIExtendedEdgeBottom];
-    
-    
-//    [tableView setTableHeaderView:searchBar];
-    
-//    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]) {
-        [self loadContacts];
-//    }
-
-    [self setTitle:PAGE_TITLE];
+    [self loadContacts];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[[DataSingleton sharedSingleton] background]]];
-    
-//    [tableView setBackgroundView:];
-//    [tableView setContentOffset:CGPointMake(0, 64)];
     
     [self.view addSubview:imageView];
     [self.view addSubview:searchBar];
@@ -166,13 +152,13 @@
     ConversationViewController *convoViewController = [[ConversationViewController alloc] init];
     Person *p = [contactsWithAccounts objectAtIndex:indexPath.row];
 
-//    for (Conversation *convo in [[DataSingleton sharedSingleton] conversations]) {
-//        if ([[convo reciever] isEqual:p]) {
-//            [convoViewController setConversation:convo];
-//            [[self navigationController] pushViewController:convoViewController animated:YES];
-//            return;
-//        }
-//    }
+    for (Conversation *convo in [[DataSingleton sharedSingleton] conversations]) {
+        if ([[convo reciever] isEqual:p]) {
+            [convoViewController setConversation:convo];
+            [[self navigationController] pushViewController:convoViewController animated:YES];
+            return;
+        }
+    }
 
     Conversation *convo = [[Conversation alloc] init];
 
@@ -183,6 +169,7 @@
     
     [NetworkProtocol post:params to:from withSuccessBlock:^(NSDictionary * dict) {
         [convo setConvoID:[dict objectForKey:CONVO_ID_KEY]];
+        [[[DataSingleton sharedSingleton] conversations] addObject:convo];
         [convoViewController setConversation:convo];
         [[self navigationController] pushViewController:convoViewController animated:YES];
     }];
@@ -229,8 +216,6 @@
             person_chosen:;
             }
             [tableView reloadData];
-
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
             
             [[DataSingleton sharedSingleton] setUsersWithAccounts:[[NSMutableArray alloc] initWithArray:contactsWithAccounts]];
             [[DataSingleton sharedSingleton] save];
