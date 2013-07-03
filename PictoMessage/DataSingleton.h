@@ -12,11 +12,11 @@
 
 @interface DataSingleton : NSObject
 
-@property (nonatomic, strong) NSMutableArray* conversations;
-@property (nonatomic, strong) NSMutableArray* usersWithAccounts;
 @property (nonatomic, strong) NSString* remoteNotificationToken;
 @property (nonatomic, strong) NSString* openUDID;
-@property (nonatomic, strong) Person* user;
+@property (nonatomic, strong) NSString* userName;
+@property (nonatomic, strong) NSString* phoneNumber;
+@property (nonatomic, strong) UIImage* profilePhoto;
 @property (nonatomic, assign) BOOL isVerified;
 @property (nonatomic, strong) NSString* currentConvoID;
 @property (nonatomic, strong) NSString* background;

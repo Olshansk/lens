@@ -1,20 +1,18 @@
 //
-//  Conversation.m
+//  Email.m
 //  Jellyfish
 //
 //  Created by Daniel Olshansky on 2013-06-29.
 //  Copyright (c) 2013 Daniel Olshansky. All rights reserved.
 //
 
-#import "Conversation.h"
-#import "Message.h"
+#import "Email.h"
 #import "Person.h"
 
 
-@implementation Conversation
+@implementation Email
 
-@dynamic conversationID;
-@dynamic messages;
-@dynamic person;
+@dynamic email;
+@dynamic emailOwner;
 
 @end

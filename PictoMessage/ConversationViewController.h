@@ -14,6 +14,6 @@
 
 @interface ConversationViewController : UIViewController <KeyboardAccessoryTextViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) Conversation* conversation;
+@property (nonatomic, weak) Conversation* conversation;
 
 @end

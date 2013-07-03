@@ -12,11 +12,8 @@
 
 #import "NSMutableArray+SaveAndLoadCustomMutableArrays.h"
 
-static NSString* const ConversationsKey = @"ConversationsKey";
-static NSString* const UsersWithAccountsKey = @"UsersWithAccountsKey";
 static NSString* const RemoteNotificationKey = @"RemoteNotificationKey";
 static NSString* const OpenUDIDKey = @"OpenUDIDKey";
-static NSString* const UserKey = @"UserKey";
 static NSString* const IsVerifiedKey = @"IsVerifiedKey";
 static NSString* const BackgroundKey = @"BackgroundKey";
 
@@ -35,15 +32,17 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
             
             NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
             
+                [prefs setBool:NO forKey:isFirstSingletonLoadKey];
             if (![prefs boolForKey:isFirstSingletonLoadKey]) {
                 
                 sharedSingleton = [[DataSingleton alloc] init];
                 
                 [sharedSingleton setOpenUDID:[OpenUDID value]];
+                NSLog(@"UDID: %@", [sharedSingleton openUDID]);
                 [sharedSingleton setBackground:@"Alamo.png"];
-                [[sharedSingleton user] setActivePhoneNumbers:[[NSMutableArray alloc] initWithArray:@[@"4157355911"]]];//sam: 5195049672 ronen:4158252307
-                [[sharedSingleton user] setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
-                [[sharedSingleton user] setUserName:@"Daniel Olshansky"];
+                [sharedSingleton setPhoneNumber:@"4157355911"];//sam: 5195049672 ronen:4158252307 jordan:
+                [sharedSingleton setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
+                [sharedSingleton setUserName:@"Daniel Olshansky"];
                 
                 [prefs setBool:YES forKey:isFirstSingletonLoadKey];
             } else {
@@ -60,9 +59,6 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
 {
     if (self = [super init])
     {
-        _conversations = [[NSMutableArray alloc] init];
-        _usersWithAccounts = [[NSMutableArray alloc] init];
-        _user = [[Person alloc] init];
     }
     return self;
 }
@@ -71,11 +67,8 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
 {
 	if ((self = [super init]))
 	{
-        _conversations = [[NSMutableArray alloc] initWithLoadKey:ConversationsKey];
-        _usersWithAccounts = [[NSMutableArray alloc] initWithLoadKey:UsersWithAccountsKey];
         _remoteNotificationToken = [decoder decodeObjectForKey:RemoteNotificationKey];
 		_openUDID = [decoder decodeObjectForKey:OpenUDIDKey];
-		_user = [decoder decodeObjectForKey:UserKey];
         _isVerified = [decoder decodeBoolForKey:IsVerifiedKey];
         _background = [decoder decodeObjectForKey:BackgroundKey];
 	}
@@ -84,11 +77,8 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
 
 - (void)encodeWithCoder:(NSCoder*)encoder
 {
-    [_conversations saveArrayWithKey:ConversationsKey];
-    [_usersWithAccounts saveArrayWithKey:UsersWithAccountsKey];
     [encoder encodeObject:_remoteNotificationToken forKey:RemoteNotificationKey];
     [encoder encodeObject:_openUDID forKey:OpenUDIDKey];
-    [encoder encodeObject:_user forKey:UserKey];
     [encoder encodeBool:_isVerified forKey:IsVerifiedKey];
     [encoder encodeObject:_background forKey:BackgroundKey];
 }
@@ -100,4 +90,5 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
     [prefs setObject:data forKey:SingletonKey];
     [prefs synchronize];
 }
+
 @end

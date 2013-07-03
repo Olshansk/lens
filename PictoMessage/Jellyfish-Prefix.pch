@@ -11,8 +11,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-
-#define PORTRAIT_STATUS_BAR_HEIGHT 20
-#define PORTRAIT_NAV_BAR_HEIGHT 44
-#define PORTRAIT_STATUS_NAV_BAR_HEIGHT 64
+    #import <CoreData/CoreData.h>
+    #import "AppDelegate.h"
+    #define PORTRAIT_STATUS_BAR_HEIGHT 20
+    #define PORTRAIT_NAV_BAR_HEIGHT 44
+    #define PORTRAIT_STATUS_NAV_BAR_HEIGHT 64
+    #define APP_DELEGATE ((AppDelegate*)[[UIApplication sharedApplication] delegate]);
 #endif

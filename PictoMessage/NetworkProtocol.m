@@ -10,7 +10,7 @@
 
 #import "NSURL+Parameters.h"
 
-#define ROOT @"http://23.22.189.243"
+#define ROOT @"http://107.22.142.146/"
 #define TIME_OUT_INTERVAL 60
 
 @implementation NetworkProtocol

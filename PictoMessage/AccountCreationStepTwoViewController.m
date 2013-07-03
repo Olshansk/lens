@@ -25,12 +25,9 @@
 {
     [super viewDidLoad];
     
-    UIView* emailView = [[UIView alloc] initWithFrame:self.view.bounds];
-    UIView* profilePictureView = [[UIView alloc] initWithFrame:CGRectOffset(self.view.bounds, self.view.frame.size.width, 0)];
-    
-    
-    UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-//    sc`
+//    UIView* emailView = [[UIView alloc] initWithFrame:self.view.bounds];
+//    UIView* profilePictureView = [[UIView alloc] initWithFrame:CGRectOffset(self.view.bounds, self.view.frame.size.width, 0)];
+//    UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     
 }
 

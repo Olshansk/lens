@@ -2,21 +2,27 @@
 //  Conversation.h
 //  Jellyfish
 //
-//  Created by Daniel Olshansky on 2013-06-02.
+//  Created by Daniel Olshansky on 2013-06-29.
 //  Copyright (c) 2013 Daniel Olshansky. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class Person;
-@class Message;
+@class Message, Person;
 
-@interface Conversation : NSObject
+@interface Conversation : NSManagedObject
 
-@property (nonatomic, strong) NSMutableArray* messages;
-@property (nonatomic, strong) NSString* convoID;
-@property (nonatomic, copy) Person* reciever;
+@property (nonatomic, retain) NSString * conversationID;
+@property (nonatomic, retain) NSSet *messages;
+@property (nonatomic, retain) Person *person;
+@end
 
-- (int)addMessage:(Message*)message;
+@interface Conversation (CoreDataGeneratedAccessors)
+
+- (void)addMessagesObject:(Message *)value;
+- (void)removeMessagesObject:(Message *)value;
+- (void)addMessages:(NSSet *)values;
+- (void)removeMessages:(NSSet *)values;
 
 @end

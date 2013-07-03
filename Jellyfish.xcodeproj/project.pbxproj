@@ -62,14 +62,29 @@
 		72CAE5AD175AB0FC00ECCFF7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CAE5AC175AB0FC00ECCFF7 /* QuartzCore.framework */; };
 		72CAE5AF175AB10900ECCFF7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CAE5AE175AB10900ECCFF7 /* OpenGLES.framework */; };
 		72CAE9C8175AE2CD00ECCFF7 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CAE9C7175AE2CD00ECCFF7 /* CoreImage.framework */; };
-		72CAE9D3175BC1A400ECCFF7 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAE9D1175BC17600ECCFF7 /* Message.m */; };
 		72CAEA02175BEF1000ECCFF7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CAEA01175BEF1000ECCFF7 /* AddressBook.framework */; };
-		72CAEA05175BF33700ECCFF7 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAEA04175BF33600ECCFF7 /* Conversation.m */; };
-		72CAEA08175BF3AC00ECCFF7 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAEA07175BF3AA00ECCFF7 /* Person.m */; };
-		72CAEA0B175C053C00ECCFF7 /* AccountCreationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAEA0A175C053A00ECCFF7 /* AccountCreationController.m */; };
 		72CAEA0F175C085100ECCFF7 /* NSURL+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAEA0E175C085100ECCFF7 /* NSURL+Parameters.m */; };
 		72E425701777F02B0023B684 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E4256E1777F02B0023B684 /* BlueBubble.png */; };
 		72E425711777F02B0023B684 /* WhiteBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E4256F1777F02B0023B684 /* WhiteBubble.png */; };
+		72F512CA177FCE1700852A34 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F512C9177FCE1700852A34 /* CoreData.framework */; };
+		72F51317177FDABF00852A34 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51316177FDABF00852A34 /* Email.m */; };
+		72F51329177FDDE400852A34 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51328177FDDE400852A34 /* Message.m */; };
+		72F51342177FE41A00852A34 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51341177FE41A00852A34 /* PhoneNumber.m */; };
+		72F513451780184000852A34 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F513441780184000852A34 /* Person.m */; };
+		72F51346178020A500852A34 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5131C177FDAC000852A34 /* Conversation.m */; };
+		72F51347178020C500852A34 /* AccountCreationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CAEA0A175C053A00ECCFF7 /* AccountCreationController.m */; };
+		72F513521780949600852A34 /* JellyfishModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72F513501780949600852A34 /* JellyfishModel.xcdatamodeld */; };
+		72F51357178099E600852A34 /* SignupPageOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51355178099E600852A34 /* SignupPageOneViewController.m */; };
+		72F51358178099E600852A34 /* SignupPageOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F51356178099E600852A34 /* SignupPageOneViewController.xib */; };
+		72F5135C17809A0000852A34 /* SignupPageTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5135A17809A0000852A34 /* SignupPageTwoViewController.m */; };
+		72F5135D17809A0000852A34 /* SignupPageTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F5135B17809A0000852A34 /* SignupPageTwoViewController.xib */; };
+		72F5136117809A1D00852A34 /* SignupPageThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5135F17809A1D00852A34 /* SignupPageThreeViewController.m */; };
+		72F5136217809A1D00852A34 /* SignupPageThreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F5136017809A1D00852A34 /* SignupPageThreeViewController.xib */; };
+		72F5136617809A2F00852A34 /* SignupPageFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5136417809A2F00852A34 /* SignupPageFourViewController.m */; };
+		72F5136717809A2F00852A34 /* SignupPageFourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72F5136517809A2F00852A34 /* SignupPageFourViewController.xib */; };
+		72F5136A17809BB000852A34 /* UIColor+ColorWIthHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5136917809BB000852A34 /* UIColor+ColorWIthHexString.m */; };
+		72F5136D1780CE0A00852A34 /* NSArray+CoreDataArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5136C1780CE0A00852A34 /* NSArray+CoreDataArray.m */; };
+		72F5136F1780E1F100852A34 /* Signup Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 72F5136E1780E1F100852A34 /* Signup Splash.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,19 +165,48 @@
 		72CAE5AE175AB10900ECCFF7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		72CAE9C7175AE2CD00ECCFF7 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		72CAE9CD175BC12900ECCFF7 /* defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		72CAE9D0175BC17500ECCFF7 /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		72CAE9D1175BC17600ECCFF7 /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		72CAE9D0175BC17500ECCFF7 /* MessageOLD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageOLD.h; sourceTree = "<group>"; };
+		72CAE9D1175BC17600ECCFF7 /* MessageOLD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageOLD.m; sourceTree = "<group>"; };
 		72CAEA01175BEF1000ECCFF7 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		72CAEA03175BF33400ECCFF7 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
-		72CAEA04175BF33600ECCFF7 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
-		72CAEA06175BF3A900ECCFF7 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		72CAEA07175BF3AA00ECCFF7 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		72CAEA03175BF33400ECCFF7 /* ConversationOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationOld.h; sourceTree = "<group>"; };
+		72CAEA04175BF33600ECCFF7 /* ConversationOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationOld.m; sourceTree = "<group>"; };
+		72CAEA06175BF3A900ECCFF7 /* PersonOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonOld.h; sourceTree = "<group>"; };
+		72CAEA07175BF3AA00ECCFF7 /* PersonOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonOld.m; sourceTree = "<group>"; };
 		72CAEA09175C053900ECCFF7 /* AccountCreationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCreationController.h; sourceTree = "<group>"; };
 		72CAEA0A175C053A00ECCFF7 /* AccountCreationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCreationController.m; sourceTree = "<group>"; };
 		72CAEA0D175C085100ECCFF7 /* NSURL+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Parameters.h"; sourceTree = "<group>"; };
 		72CAEA0E175C085100ECCFF7 /* NSURL+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Parameters.m"; sourceTree = "<group>"; };
 		72E4256E1777F02B0023B684 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
 		72E4256F1777F02B0023B684 /* WhiteBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteBubble.png; sourceTree = "<group>"; };
+		72F512C9177FCE1700852A34 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		72F51315177FDABF00852A34 /* Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Email.h; sourceTree = "<group>"; };
+		72F51316177FDABF00852A34 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
+		72F5131B177FDAC000852A34 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
+		72F5131C177FDAC000852A34 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
+		72F51327177FDDE400852A34 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		72F51328177FDDE400852A34 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		72F51340177FE41A00852A34 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
+		72F51341177FE41A00852A34 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
+		72F513431780184000852A34 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		72F513441780184000852A34 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		72F513511780949600852A34 /* JellyfishModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JellyfishModel.xcdatamodel; sourceTree = "<group>"; };
+		72F51354178099E600852A34 /* SignupPageOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupPageOneViewController.h; sourceTree = "<group>"; };
+		72F51355178099E600852A34 /* SignupPageOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupPageOneViewController.m; sourceTree = "<group>"; };
+		72F51356178099E600852A34 /* SignupPageOneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupPageOneViewController.xib; sourceTree = "<group>"; };
+		72F5135917809A0000852A34 /* SignupPageTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupPageTwoViewController.h; sourceTree = "<group>"; };
+		72F5135A17809A0000852A34 /* SignupPageTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupPageTwoViewController.m; sourceTree = "<group>"; };
+		72F5135B17809A0000852A34 /* SignupPageTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupPageTwoViewController.xib; sourceTree = "<group>"; };
+		72F5135E17809A1D00852A34 /* SignupPageThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupPageThreeViewController.h; sourceTree = "<group>"; };
+		72F5135F17809A1D00852A34 /* SignupPageThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupPageThreeViewController.m; sourceTree = "<group>"; };
+		72F5136017809A1D00852A34 /* SignupPageThreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupPageThreeViewController.xib; sourceTree = "<group>"; };
+		72F5136317809A2F00852A34 /* SignupPageFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupPageFourViewController.h; sourceTree = "<group>"; };
+		72F5136417809A2F00852A34 /* SignupPageFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupPageFourViewController.m; sourceTree = "<group>"; };
+		72F5136517809A2F00852A34 /* SignupPageFourViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupPageFourViewController.xib; sourceTree = "<group>"; };
+		72F5136817809BB000852A34 /* UIColor+ColorWIthHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWIthHexString.h"; sourceTree = "<group>"; };
+		72F5136917809BB000852A34 /* UIColor+ColorWIthHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWIthHexString.m"; sourceTree = "<group>"; };
+		72F5136B1780CE0A00852A34 /* NSArray+CoreDataArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CoreDataArray.h"; sourceTree = "<group>"; };
+		72F5136C1780CE0A00852A34 /* NSArray+CoreDataArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CoreDataArray.m"; sourceTree = "<group>"; };
+		72F5136E1780E1F100852A34 /* Signup Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Signup Splash.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72F512CA177FCE1700852A34 /* CoreData.framework in Frameworks */,
 				72CAEA02175BEF1000ECCFF7 /* AddressBook.framework in Frameworks */,
 				72CAE9C8175AE2CD00ECCFF7 /* CoreImage.framework in Frameworks */,
 				72CAE5AD175AB0FC00ECCFF7 /* QuartzCore.framework in Frameworks */,
@@ -222,6 +267,7 @@
 		7222BC811753EF4100F163AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72F512C9177FCE1700852A34 /* CoreData.framework */,
 				72CAE9C7175AE2CD00ECCFF7 /* CoreImage.framework */,
 				72CAE5AE175AB10900ECCFF7 /* OpenGLES.framework */,
 				72CAE5AC175AB0FC00ECCFF7 /* QuartzCore.framework */,
@@ -240,6 +286,7 @@
 		7222BC881753EF4100F163AC /* PictoMessage */ = {
 			isa = PBXGroup;
 			children = (
+				72F51353178099AB00852A34 /* Signup */,
 				72AB3E3D17699E6E001907F0 /* wolf.jpg */,
 				725E6DBC17641E9700928F4B /* OpenUDID */,
 				72CAEA0C175C083800ECCFF7 /* Categories */,
@@ -277,6 +324,7 @@
 		7222BC891753EF4100F163AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				72F5136E1780E1F100852A34 /* Signup Splash.png */,
 				72E4256D1777F01F0023B684 /* Message Bubble */,
 				7204C4A91776900600B01706 /* UpdateProfilePhoto.png */,
 				7204C4A2177631EA00B01706 /* TransparentBackground.png */,
@@ -352,6 +400,10 @@
 				72CAEA0E175C085100ECCFF7 /* NSURL+Parameters.m */,
 				7217832B176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.h */,
 				7217832C176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m */,
+				72F5136817809BB000852A34 /* UIColor+ColorWIthHexString.h */,
+				72F5136917809BB000852A34 /* UIColor+ColorWIthHexString.m */,
+				72F5136B1780CE0A00852A34 /* NSArray+CoreDataArray.h */,
+				72F5136C1780CE0A00852A34 /* NSArray+CoreDataArray.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -359,12 +411,23 @@
 		72CAEA10175DBA1A00ECCFF7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				72CAEA03175BF33400ECCFF7 /* Conversation.h */,
-				72CAEA04175BF33600ECCFF7 /* Conversation.m */,
-				72CAE9D0175BC17500ECCFF7 /* Message.h */,
-				72CAE9D1175BC17600ECCFF7 /* Message.m */,
-				72CAEA06175BF3A900ECCFF7 /* Person.h */,
-				72CAEA07175BF3AA00ECCFF7 /* Person.m */,
+				72F513501780949600852A34 /* JellyfishModel.xcdatamodeld */,
+				72F513431780184000852A34 /* Person.h */,
+				72F513441780184000852A34 /* Person.m */,
+				72F51340177FE41A00852A34 /* PhoneNumber.h */,
+				72F51341177FE41A00852A34 /* PhoneNumber.m */,
+				72F5131B177FDAC000852A34 /* Conversation.h */,
+				72F5131C177FDAC000852A34 /* Conversation.m */,
+				72F51327177FDDE400852A34 /* Message.h */,
+				72F51328177FDDE400852A34 /* Message.m */,
+				72F51315177FDABF00852A34 /* Email.h */,
+				72F51316177FDABF00852A34 /* Email.m */,
+				72CAEA03175BF33400ECCFF7 /* ConversationOld.h */,
+				72CAEA04175BF33600ECCFF7 /* ConversationOld.m */,
+				72CAE9D0175BC17500ECCFF7 /* MessageOLD.h */,
+				72CAE9D1175BC17600ECCFF7 /* MessageOLD.m */,
+				72CAEA06175BF3A900ECCFF7 /* PersonOld.h */,
+				72CAEA07175BF3AA00ECCFF7 /* PersonOld.m */,
 				725E6DC017641EE900928F4B /* DataSingleton.h */,
 				725E6DC117641EE900928F4B /* DataSingleton.m */,
 			);
@@ -378,6 +441,25 @@
 				72E4256F1777F02B0023B684 /* WhiteBubble.png */,
 			);
 			name = "Message Bubble";
+			sourceTree = "<group>";
+		};
+		72F51353178099AB00852A34 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				72F51354178099E600852A34 /* SignupPageOneViewController.h */,
+				72F51355178099E600852A34 /* SignupPageOneViewController.m */,
+				72F51356178099E600852A34 /* SignupPageOneViewController.xib */,
+				72F5135917809A0000852A34 /* SignupPageTwoViewController.h */,
+				72F5135A17809A0000852A34 /* SignupPageTwoViewController.m */,
+				72F5135B17809A0000852A34 /* SignupPageTwoViewController.xib */,
+				72F5135E17809A1D00852A34 /* SignupPageThreeViewController.h */,
+				72F5135F17809A1D00852A34 /* SignupPageThreeViewController.m */,
+				72F5136017809A1D00852A34 /* SignupPageThreeViewController.xib */,
+				72F5136317809A2F00852A34 /* SignupPageFourViewController.h */,
+				72F5136417809A2F00852A34 /* SignupPageFourViewController.m */,
+				72F5136517809A2F00852A34 /* SignupPageFourViewController.xib */,
+			);
+			name = Signup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +522,7 @@
 				72B01730176EB21B00B977E2 /* Icon.png in Resources */,
 				72CAE590175A826200ECCFF7 /* MessageEntryBackground.png in Resources */,
 				72CAE591175A826200ECCFF7 /* MessageEntryBackground@2x.png in Resources */,
+				72F5135D17809A0000852A34 /* SignupPageTwoViewController.xib in Resources */,
 				7204C49F17718EBF00B01706 /* Mirada.png in Resources */,
 				72E425711777F02B0023B684 /* WhiteBubble.png in Resources */,
 				7204C4A017718EBF00B01706 /* Oasis.png in Resources */,
@@ -450,13 +533,17 @@
 				7204C49C17718EBF00B01706 /* Alamo.png in Resources */,
 				72CAE595175A826200ECCFF7 /* MessageEntrySendButton@2x.png in Resources */,
 				7204C48F177183D400B01706 /* InviteIcon.png in Resources */,
+				72F5136217809A1D00852A34 /* SignupPageThreeViewController.xib in Resources */,
 				72CAE596175A826200ECCFF7 /* MessageEntrySendButtonPressed.png in Resources */,
 				72E425701777F02B0023B684 /* BlueBubble.png in Resources */,
+				72F5136F1780E1F100852A34 /* Signup Splash.png in Resources */,
 				72CAE597175A826200ECCFF7 /* MessageEntrySendButtonPressed@2x.png in Resources */,
 				7204C4A3177631EA00B01706 /* TransparentBackground.png in Resources */,
 				7204C49D17718EBF00B01706 /* Divisadero.png in Resources */,
 				7204C4A117718EBF00B01706 /* Palo Alto.png in Resources */,
+				72F5136717809A2F00852A34 /* SignupPageFourViewController.xib in Resources */,
 				72B01732176EB21B00B977E2 /* Icon_120x120@2x.png in Resources */,
+				72F51358178099E600852A34 /* SignupPageOneViewController.xib in Resources */,
 				725E6DCE1769935E00928F4B /* PersonalSettingsDefs.h in Resources */,
 				7204C49E17718EBF00B01706 /* Encinitas.png in Resources */,
 				72AB3E3E17699E6E001907F0 /* wolf.jpg in Resources */,
@@ -470,27 +557,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72CAE9D3175BC1A400ECCFF7 /* Message.m in Sources */,
+				72F513521780949600852A34 /* JellyfishModel.xcdatamodeld in Sources */,
+				72F51347178020C500852A34 /* AccountCreationController.m in Sources */,
+				72F51346178020A500852A34 /* Conversation.m in Sources */,
+				72F5136D1780CE0A00852A34 /* NSArray+CoreDataArray.m in Sources */,
+				72F51329177FDDE400852A34 /* Message.m in Sources */,
+				72F5136117809A1D00852A34 /* SignupPageThreeViewController.m in Sources */,
 				72CAE59C175A857800ECCFF7 /* KeyboardAccessoryTextView.m in Sources */,
 				72CAE59A175A855D00ECCFF7 /* HPGrowingTextView.m in Sources */,
 				72CAE59B175A855D00ECCFF7 /* HPTextViewInternal.m in Sources */,
 				7222BC8F1753EF4100F163AC /* main.m in Sources */,
 				7222BC931753EF4100F163AC /* AppDelegate.m in Sources */,
+				72F5136A17809BB000852A34 /* UIColor+ColorWIthHexString.m in Sources */,
 				7222BCA31753F38700F163AC /* ConversationViewController.m in Sources */,
 				7224A9871753F3C4002ECDF6 /* MessageView.m in Sources */,
 				7224A999175408BE002ECDF6 /* CaptureSessionManager.m in Sources */,
 				7217832D176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m in Sources */,
 				7204C4A8177670F100B01706 /* AccountTableViewCell.m in Sources */,
+				72F51342177FE41A00852A34 /* PhoneNumber.m in Sources */,
+				72F5136617809A2F00852A34 /* SignupPageFourViewController.m in Sources */,
 				72CAE5A1175AA71D00ECCFF7 /* ConversationsTableViewController.m in Sources */,
-				72CAEA05175BF33700ECCFF7 /* Conversation.m in Sources */,
-				72CAEA08175BF3AC00ECCFF7 /* Person.m in Sources */,
-				72CAEA0B175C053C00ECCFF7 /* AccountCreationController.m in Sources */,
+				72F51357178099E600852A34 /* SignupPageOneViewController.m in Sources */,
 				72CAEA0F175C085100ECCFF7 /* NSURL+Parameters.m in Sources */,
 				725E6DBB1763E69200928F4B /* NetworkProtocol.m in Sources */,
+				72F51317177FDABF00852A34 /* Email.m in Sources */,
 				725E6DBF17641EB400928F4B /* OpenUDID.m in Sources */,
+				72F5135C17809A0000852A34 /* SignupPageTwoViewController.m in Sources */,
 				725E6DC217641EE900928F4B /* DataSingleton.m in Sources */,
 				7204C494177189EC00B01706 /* UIView+EasyDimensions.m in Sources */,
 				725E6DC517642C8200928F4B /* AccountCreationStepTwoViewController.m in Sources */,
+				72F513451780184000852A34 /* Person.m in Sources */,
 				725E6DC817683D4100928F4B /* PersonalSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +713,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		72F513501780949600852A34 /* JellyfishModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				72F513511780949600852A34 /* JellyfishModel.xcdatamodel */,
+			);
+			currentVersion = 72F513511780949600852A34 /* JellyfishModel.xcdatamodel */;
+			path = JellyfishModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7222BC771753EF4000F163AC /* Project object */;
 }

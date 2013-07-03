@@ -1,16 +1,21 @@
 //
 //  Message.h
-//  PushChatStarter
+//  Jellyfish
 //
-//  Created by Kauserali on 28/03/13.
-//  Copyright (c) 2013 Ray Wenderlich. All rights reserved.
+//  Created by Daniel Olshansky on 2013-06-29.
+//  Copyright (c) 2013 Daniel Olshansky. All rights reserved.
 //
-@class Person;
 
-@interface Message : NSObject <NSCoding>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@property (nonatomic, copy) NSDate* date;
-@property (nonatomic, copy) NSString* text;
-@property (nonatomic, copy) UIImage* image;
+@class Conversation;
+
+@interface Message : NSManagedObject
+
+@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic, retain) Conversation *conversation;
 
 @end

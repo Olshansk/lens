@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment version="1792" defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignupPageOneViewController">
+            <connections>
+                <outlet property="backgroundView" destination="iby-Nx-vdd" id="gFC-vG-hxX"/>
+                <outlet property="continueButton" destination="KY4-J3-8gO" id="um4-0I-F8O"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iby-Nx-vdd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY4-J3-8gO">
+                    <rect key="frame" x="0.0" y="381" width="320" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.16470588743686676" green="0.58823531866073608" blue="0.98823535442352295" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="ozS-fe-t2i"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Continue">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="continueAction:" destination="-2" eventType="touchUpInside" id="Kwt-Hy-MuC"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Signup Splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZaE-JN-1Wr">
+                    <rect key="frame" x="40" y="127" width="240" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KY4-J3-8gO" secondAttribute="bottom" constant="119" id="Fw8-tE-P9j"/>
+                <constraint firstItem="iby-Nx-vdd" firstAttribute="trailing" secondItem="KY4-J3-8gO" secondAttribute="trailing" id="JAa-GO-C0O"/>
+                <constraint firstItem="KY4-J3-8gO" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="Lgl-Se-QYV"/>
+                <constraint firstItem="KY4-J3-8gO" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="fTR-jh-Iai"/>
+                <constraint firstItem="KY4-J3-8gO" firstAttribute="leading" secondItem="iby-Nx-vdd" secondAttribute="leading" id="gM4-VU-9KT"/>
+                <constraint firstItem="iby-Nx-vdd" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="mKy-Fl-8Yb"/>
+                <constraint firstItem="iby-Nx-vdd" firstAttribute="top" secondItem="1" secondAttribute="top" id="oAc-Yq-z7p"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Signup Splash.png" width="350" height="360"/>
+    </resources>
+</document>
