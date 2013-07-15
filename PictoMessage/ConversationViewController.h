@@ -11,10 +11,13 @@
 #import "KeyboardAccessoryTextView.h"
 
 @class Conversation;
+@class Message;
 
 @interface ConversationViewController : UIViewController <KeyboardAccessoryTextViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) Conversation* conversation;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
+-(void)updateScreenWithMessage:(Message*)message;
 
 @end

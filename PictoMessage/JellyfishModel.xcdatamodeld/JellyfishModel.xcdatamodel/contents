@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3381.3" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3383" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Conversation" representedClassName="Conversation" syncable="YES">
         <attribute name="conversationID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="conversation" inverseEntity="Message" syncable="YES"/>
@@ -12,6 +12,7 @@
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFromMe" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="messages" inverseEntity="Conversation" syncable="YES"/>
     </entity>
@@ -30,10 +31,10 @@
         <relationship name="phonenumberowner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="phonenumbers" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Conversation" positionX="313" positionY="198" width="128" height="45"/>
-        <element name="Email" positionX="313" positionY="15" width="128" height="73"/>
-        <element name="Message" positionX="313" positionY="288" width="128" height="90"/>
-        <element name="Person" positionX="34" positionY="254" width="128" height="148"/>
-        <element name="PhoneNumber" positionX="18" positionY="53" width="128" height="88"/>
+        <element name="Conversation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Email" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Message" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Person" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PhoneNumber" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

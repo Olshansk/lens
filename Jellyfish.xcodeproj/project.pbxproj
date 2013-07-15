@@ -43,6 +43,7 @@
 		725E6DC517642C8200928F4B /* AccountCreationStepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725E6DC417642C8200928F4B /* AccountCreationStepTwoViewController.m */; };
 		725E6DC817683D4100928F4B /* PersonalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725E6DC717683D4100928F4B /* PersonalSettingsViewController.m */; };
 		725E6DCE1769935E00928F4B /* PersonalSettingsDefs.h in Resources */ = {isa = PBXBuildFile; fileRef = 725E6DCD1769935E00928F4B /* PersonalSettingsDefs.h */; };
+		7291FBB7179391100041D66D /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7291FBB6179391100041D66D /* Message.m */; };
 		72AB3E3E17699E6E001907F0 /* wolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72AB3E3D17699E6E001907F0 /* wolf.jpg */; };
 		72B01730176EB21B00B977E2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B0172D176EB21B00B977E2 /* Icon.png */; };
 		72B01731176EB21B00B977E2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B0172E176EB21B00B977E2 /* Icon@2x.png */; };
@@ -68,7 +69,6 @@
 		72E425711777F02B0023B684 /* WhiteBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 72E4256F1777F02B0023B684 /* WhiteBubble.png */; };
 		72F512CA177FCE1700852A34 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F512C9177FCE1700852A34 /* CoreData.framework */; };
 		72F51317177FDABF00852A34 /* Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51316177FDABF00852A34 /* Email.m */; };
-		72F51329177FDDE400852A34 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51328177FDDE400852A34 /* Message.m */; };
 		72F51342177FE41A00852A34 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F51341177FE41A00852A34 /* PhoneNumber.m */; };
 		72F513451780184000852A34 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F513441780184000852A34 /* Person.m */; };
 		72F51346178020A500852A34 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F5131C177FDAC000852A34 /* Conversation.m */; };
@@ -140,6 +140,8 @@
 		725E6DC617683D4000928F4B /* PersonalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingsViewController.h; sourceTree = "<group>"; };
 		725E6DC717683D4100928F4B /* PersonalSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalSettingsViewController.m; sourceTree = "<group>"; };
 		725E6DCD1769935E00928F4B /* PersonalSettingsDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingsDefs.h; sourceTree = "<group>"; };
+		7291FBB5179391100041D66D /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		7291FBB6179391100041D66D /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		72A0B03F176D44350012B64D /* ConversationViewControllerDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationViewControllerDefs.h; sourceTree = "<group>"; };
 		72AB3E3D17699E6E001907F0 /* wolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wolf.jpg; sourceTree = "<group>"; };
 		72B0172D176EB21B00B977E2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -183,8 +185,6 @@
 		72F51316177FDABF00852A34 /* Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Email.m; sourceTree = "<group>"; };
 		72F5131B177FDAC000852A34 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
 		72F5131C177FDAC000852A34 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
-		72F51327177FDDE400852A34 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		72F51328177FDDE400852A34 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		72F51340177FE41A00852A34 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
 		72F51341177FE41A00852A34 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		72F513431780184000852A34 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -412,14 +412,14 @@
 			isa = PBXGroup;
 			children = (
 				72F513501780949600852A34 /* JellyfishModel.xcdatamodeld */,
+				7291FBB5179391100041D66D /* Message.h */,
+				7291FBB6179391100041D66D /* Message.m */,
 				72F513431780184000852A34 /* Person.h */,
 				72F513441780184000852A34 /* Person.m */,
 				72F51340177FE41A00852A34 /* PhoneNumber.h */,
 				72F51341177FE41A00852A34 /* PhoneNumber.m */,
 				72F5131B177FDAC000852A34 /* Conversation.h */,
 				72F5131C177FDAC000852A34 /* Conversation.m */,
-				72F51327177FDDE400852A34 /* Message.h */,
-				72F51328177FDDE400852A34 /* Message.m */,
 				72F51315177FDABF00852A34 /* Email.h */,
 				72F51316177FDABF00852A34 /* Email.m */,
 				72CAEA03175BF33400ECCFF7 /* ConversationOld.h */,
@@ -561,7 +561,6 @@
 				72F51347178020C500852A34 /* AccountCreationController.m in Sources */,
 				72F51346178020A500852A34 /* Conversation.m in Sources */,
 				72F5136D1780CE0A00852A34 /* NSArray+CoreDataArray.m in Sources */,
-				72F51329177FDDE400852A34 /* Message.m in Sources */,
 				72F5136117809A1D00852A34 /* SignupPageThreeViewController.m in Sources */,
 				72CAE59C175A857800ECCFF7 /* KeyboardAccessoryTextView.m in Sources */,
 				72CAE59A175A855D00ECCFF7 /* HPGrowingTextView.m in Sources */,
@@ -572,6 +571,7 @@
 				7222BCA31753F38700F163AC /* ConversationViewController.m in Sources */,
 				7224A9871753F3C4002ECDF6 /* MessageView.m in Sources */,
 				7224A999175408BE002ECDF6 /* CaptureSessionManager.m in Sources */,
+				7291FBB7179391100041D66D /* Message.m in Sources */,
 				7217832D176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m in Sources */,
 				7204C4A8177670F100B01706 /* AccountTableViewCell.m in Sources */,
 				72F51342177FE41A00852A34 /* PhoneNumber.m in Sources */,

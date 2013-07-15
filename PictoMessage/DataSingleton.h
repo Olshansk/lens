@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Person;
+@class ConversationViewController;
 
 @interface DataSingleton : NSObject
 
@@ -20,6 +21,8 @@
 @property (nonatomic, assign) BOOL isVerified;
 @property (nonatomic, strong) NSString* currentConvoID;
 @property (nonatomic, strong) NSString* background;
+
+@property (nonatomic, strong) ConversationViewController *controller;
 
 +(DataSingleton *)sharedSingleton;
 -(void)save;

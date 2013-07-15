@@ -2,7 +2,7 @@
 //  Message.m
 //  Jellyfish
 //
-//  Created by Daniel Olshansky on 2013-06-29.
+//  Created by Daniel Olshansky on 2013-07-14.
 //  Copyright (c) 2013 Daniel Olshansky. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 @implementation Message
 
 @dynamic date;
-@dynamic text;
 @dynamic imageURL;
+@dynamic text;
+@dynamic isFromMe;
 @dynamic conversation;
 
 @end

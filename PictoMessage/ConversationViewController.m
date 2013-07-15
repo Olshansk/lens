@@ -41,6 +41,7 @@
     UIImageView *backgroundView;
     
     UIImage *backgroundImage;
+    UIImage *sendImage;
     
     UITableView *tableView;
 }
@@ -111,6 +112,7 @@
     [super viewDidAppear:animated];
     
     [[DataSingleton sharedSingleton] setCurrentConvoID:[_conversation conversationID]];
+    [[DataSingleton sharedSingleton] setController:self];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -118,6 +120,7 @@
     [super viewDidDisappear:animated];
     
     [[DataSingleton sharedSingleton] setCurrentConvoID:nil];
+    [[DataSingleton sharedSingleton] setController:nil];
 }
 
 -(void)temp1
@@ -144,6 +147,12 @@
 //    [self scrollToNewestMessage];
 }
 
+-(void)updateScreenWithMessage:(Message*)message {
+    backgroundImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[message imageURL]]]];
+    [backgroundView setImage:backgroundImage];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(aniamteImageBlurEffect:) userInfo:nil repeats:NO];
+}
+
 #pragma mark KeyboardAccessoryTextViewDelegate
 
 -(void) didSubmitQuestion:(NSString*)message
@@ -155,10 +164,7 @@
 
 - (void)saveImage:(id)sender
 {
-    backgroundImage = [captureManager stillImage];
-    [backgroundView setImage:backgroundImage];
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(aniamteImageBlurEffect:) userInfo:nil repeats:NO];
+    sendImage = [captureManager stillImage];
 }
 
 -(void)aniamteImageBlurEffect:(id)sender
@@ -209,7 +215,7 @@
 - (void)configureCell:(MessageView *)cell atIndexPath:(NSIndexPath *)indexPath {
     Message* message = [_fetchedResultsController objectAtIndexPath:indexPath];
     [cell setBackgroundColor:[UIColor clearColor]];
-    [cell setCellText:message.text withThumbnailImage:[UIImage imageNamed:@"img.jpg"] isFromMe:indexPath.row % 2 == 0];
+    [cell setCellText:message.text withThumbnailImage:[UIImage imageNamed:@"img.jpg"] isFromMe:[message isFromMe]];
     
     NSLog(@"SHOWING MESSAGE WITH CONVO ID: %@ INSIDE CONVO WITH CONVO ID: %@", message.conversation.conversationID, _conversation.conversationID);
 }
@@ -295,6 +301,7 @@
     
     [message setDate:[NSDate date]];
     [message setText:text];
+    [message setIsFromMe:@YES];
     [message setConversation:_conversation];
     [_conversation addMessagesObject:message];
     
@@ -315,7 +322,7 @@
     [NetworkProtocol get:getURLParams from:from withSuccessBlock:^(NSDictionary * dict) {
         NSArray *params = [dict objectForKey:URL_DICT_WRAPPER_KEY];
         
-        NSData *imageData = UIImageJPEGRepresentation(backgroundImage, 0.01);
+        NSData *imageData = UIImageJPEGRepresentation(sendImage, 0.01);
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:AWS_ROOT]];
@@ -441,7 +448,7 @@
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 //            [tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            [self scrollToNewestMessage:newIndexPath];
+//            [self scrollToNewestMessage:newIndexPath];
             break;
         case NSFetchedResultsChangeDelete:
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

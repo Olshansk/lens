@@ -16,11 +16,16 @@
 #import "PersonalSettingsViewController.h"
 #import "DataSingleton.h"
 #import "Conversation.h"
+#import "Message.h"
+
+#import "ConversationViewController.h"
 
 #import "SignupPageOneViewController.h"
 #import "SignupPageTwoViewController.h"
 #import "SignupPageThreeViewController.h"
 #import "SignupPageFourViewController.h"
+
+#import "NSArray+CoreDataArray.h"
 
 #define FIRST_TIME_KEY @"firstTime"
 #define CONVO_ID_KEY @"conversation_id"
@@ -114,10 +119,10 @@
 
 - (void)addMessagesFromRemoteNotification:(NSDictionary*)dict updateUI:(BOOL)update
 {
-//    NSString *convoID =  [dict objectForKey:@"conversation_id"];
-//    NSString *url =  [dict objectForKey:@"url"];
-//    NSString *msg = [[dict objectForKey:@"aps"] objectForKey:@"alert"]; // [userInfo valueForKey:@"aps.alert"]
-//    NSString *convo = [dict objectForKey:CONVO_ID_KEY];
+    NSString *convoID =  [NSString stringWithFormat:@"%@", [dict objectForKey:@"conversation_id"] ];
+    NSString *url =  [dict objectForKey:@"url"];
+    NSString *msg = [[dict objectForKey:@"aps"] objectForKey:@"alert"]; // [userInfo valueForKey:@"aps.alert"]
+    NSString *convo = [dict objectForKey:CONVO_ID_KEY];
     
     /*
     //Receving message
@@ -135,14 +140,32 @@
    */
  
     
-//    for (Conversation *convo in [[DataSingleton sharedSingleton] conversations]) {
-//        if ([[convo convoID] isEqualToString:convo]) {
+    NSArray *convoArray = [NSArray arrayFromCoreDataWithEntityName:@"Conversation" andPredicateFormat:[NSString stringWithFormat:@"conversationID == %@", convoID]];
     
-//            [convoViewController setConversation:convo];
-//            [[self navigationController] pushViewController:convoViewController animated:YES];
-//            return;
-//        }
-//    }
+    if ([convoArray count] == 0) {
+        NSLog(@"NO CORRESPONDING CONVO FOUND FOR NOTIFICATION.");
+        return;
+    }
+    
+    Conversation *conversation = [convoArray objectAtIndex:0];
+
+    Message* message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:_managedObjectContext];
+    
+    [message setDate:[NSDate date]];
+    [message setText:msg];
+    [message setIsFromMe:@NO];
+    [message setImageURL:url];
+    [message setConversation:conversation];
+    [conversation addMessagesObject:message];
+    
+    [self saveContext];
+    
+    NSString *currentConvo = [[DataSingleton sharedSingleton] currentConvoID];
+    
+    if ([currentConvo isEqualToString:convoID]) {
+        
+        [((ConversationViewController*)[[DataSingleton sharedSingleton] controller]) updateScreenWithMessage:message];
+    }
 }
 
 - (UIViewController*)getRootViewController
