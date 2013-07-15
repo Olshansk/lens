@@ -12,8 +12,9 @@
 
 @class Conversation;
 
-@interface ConversationViewController : UIViewController <KeyboardAccessoryTextViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ConversationViewController : UIViewController <KeyboardAccessoryTextViewDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, weak) Conversation* conversation;
+@property (nonatomic, strong) Conversation* conversation;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end

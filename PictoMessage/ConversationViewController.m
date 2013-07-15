@@ -29,9 +29,13 @@
 #import "DataSingleton.h"
 #import "Person.h"
 
+#define MESSAGE_BATCH_SIZE 20
+#define IMAGE_SCALING_BORDER 30
+
 @implementation ConversationViewController
 {
     CaptureSessionManager *captureManager;
+    
     KeyboardAccessoryTextView *accessoryView;
     
     UIImageView *backgroundView;
@@ -54,7 +58,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapScrollView:)];
     
     backgroundView = [[UIImageView alloc] init];
-    [backgroundView setFrame:CGRectMake(-30, -30, self.view.frame.size.width + 30*2, self.view.frame.size.height + 30*2)];
+    [backgroundView setFrame:CGRectMake(-IMAGE_SCALING_BORDER, -IMAGE_SCALING_BORDER, self.view.frame.size.width + IMAGE_SCALING_BORDER * 2, self.view.frame.size.height + IMAGE_SCALING_BORDER * 2)];
         
     captureManager = [[CaptureSessionManager alloc] init];
     [captureManager addVideoInput];
@@ -72,6 +76,8 @@
     [tableView setDataSource:self];
     [tableView setBackgroundColor:[UIColor clearColor]];
 
+    [self performFetchResultsController];
+    
     [self.view addSubview:backgroundView];
     [self.view addSubview:tableView];
     [self.view addSubview:accessoryView];
@@ -87,11 +93,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kImageCapturedSuccessfully object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    _fetchedResultsController = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -110,33 +122,33 @@
 
 -(void)temp1
 {
-    [captureManager captureStillImage];
-
-    AppDelegate *delegate = APP_DELEGATE;
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    
-    Message* message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:context];
-    
-    [message setConversation:_conversation];
-    [_conversation addMessagesObject:message];
-    
-	message.date = [NSDate date];
-	message.text = @"Me";
-
-    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[[_conversation messages] count] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    [self scrollToNewestMessage];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    static int x = 0;
+    x++;
+    [self didSendMessage:[NSString stringWithFormat:@"%d", x]];
+//    [captureManager captureStillImage];
+//
+//    AppDelegate *delegate = APP_DELEGATE;
+//    NSManagedObjectContext *context = [delegate managedObjectContext];
+//    
+//    Message* message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:context];
+//    
+//    [message setConversation:_conversation];
+//    [_conversation addMessagesObject:message];
+//    
+//	message.date = [NSDate date];
+//	message.text = @"Me";
+//
+//    [delegate saveContext];
+//    
+//    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[[_conversation messages] count] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+//    [self scrollToNewestMessage];
 }
 
 #pragma mark KeyboardAccessoryTextViewDelegate
 
 -(void) didSubmitQuestion:(NSString*)message
 {
-    [self sendMessage:message];
+    [self didSendMessage:message];
 }
 
 #define Capture Still Image
@@ -190,7 +202,16 @@
 
 - (int)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return _conversation.messages.count;
+    id  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (void)configureCell:(MessageView *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Message* message = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [cell setCellText:message.text withThumbnailImage:[UIImage imageNamed:@"img.jpg"] isFromMe:indexPath.row % 2 == 0];
+    
+    NSLog(@"SHOWING MESSAGE WITH CONVO ID: %@ INSIDE CONVO WITH CONVO ID: %@", message.conversation.conversationID, _conversation.conversationID);
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableview cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -198,12 +219,12 @@
 	static NSString* CellIdentifier = @"MessageCellIdentifier";
     
 	MessageView* cell = (MessageView*)[tableview dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil)
+	if (cell == nil) {
 		cell = [[MessageView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
-	Message* message = ([[_conversation messages] allObjects])[indexPath.row];
-    [cell setBackgroundColor:[UIColor clearColor]];
-    [cell setCellText:message.text withThumbnailImage:[UIImage imageNamed:@"img.jpg"] isFromMe:indexPath.row % 2 == 0];
+    [self configureCell:cell atIndexPath:indexPath];
+    
 	return cell;
 }
 
@@ -211,13 +232,19 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-	Message* message = ([[_conversation messages] allObjects])[indexPath.row];
+	Message* message = [_fetchedResultsController objectAtIndexPath:indexPath];
     return [MessageView getHeightForText:message.text withTotalWidth:self.view.frame.size.width];
 }
 
 - (void)scrollToNewestMessage
 {
-	NSIndexPath* indexPath = [NSIndexPath indexPathForRow:(_conversation.messages.count - 1) inSection:0];
+    NSInteger numOfElements = [[[_fetchedResultsController sections] objectAtIndex:0] numberOfObjects];
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:(numOfElements - 2) inSection:0];
+	[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void)scrollToNewestMessage:(NSIndexPath*)indexPath
+{
 	[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
@@ -266,16 +293,16 @@
     
     Message* message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:context];
     
+    [message setDate:[NSDate date]];
+    [message setText:text];
     [message setConversation:_conversation];
     [_conversation addMessagesObject:message];
-
-	message.date = [NSDate date];
-	message.text = text;
-    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[[_conversation messages] count] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-    [self scrollToNewestMessage];
+    
+    [delegate saveContext];
     
     [self sendMessage:text];
 
+    NSLog(@"ADDED MESSAGE WITH CONVERSATION ID: %@", [ [message conversation] conversationID]);
 }
 
 #pragma mark Network Stuff
@@ -311,14 +338,14 @@
             if ([key isEqualToString:@"file"]) {
                 [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, @"TEMP,jpg"] dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[[NSString stringWithString:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[NSData dataWithData:imageData]];
-                [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             }else {
                 [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-                [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
             }
         }
         
@@ -352,6 +379,99 @@
         }];
         
     }];
+}
+
+#pragma mark NSFetchResultsController Stuff
+
+- (void)performFetchResultsController {
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		exit(-1);
+	}
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    AppDelegate *delegate = APP_DELEGATE;
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Message" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"conversation.conversationID == '%@'", [_conversation conversationID]]];
+    [fetchRequest setPredicate:predicate];
+    NSLog(@"PREDICATE WITH CONVERSATION ID: %@", [_conversation conversationID]);
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:MESSAGE_BATCH_SIZE];
+    
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"Root"];
+    _fetchedResultsController = theFetchedResultsController;
+    [_fetchedResultsController setDelegate: self];
+    
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"conversation.conversationID == '%@'", [_conversation conversationID]]];
+    [NSFetchedResultsController deleteCacheWithName:nil];
+    [[_fetchedResultsController fetchRequest] setPredicate:predicate];
+    
+    
+    return _fetchedResultsController;
+    
+    
+    
+//    NSPredicate *predicate =[NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+//    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+//    NSError *error = nil;
+//    [self.fetchedResultsController performFetch:&error];
+    
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self scrollToNewestMessage:newIndexPath];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:((MessageView*)[tableView cellForRowAtIndexPath:indexPath]) atIndexPath:indexPath];
+            break;
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [tableView endUpdates];
 }
 
 @end

@@ -53,7 +53,7 @@
     [self updateConversationsWithLaunchOptions:launchOptions];
     
     [self.window setTintColor:[UIColor whiteColor]];
-    [self.window setRootViewController:s1];
+    [self.window setRootViewController:navController];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
     

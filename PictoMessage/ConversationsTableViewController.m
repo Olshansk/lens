@@ -62,7 +62,8 @@
     [peopleTableView setDelegate:self];
     [peopleTableView setBackgroundColor:[UIColor clearColor]];
     
-    [self loadContacts];
+//    [self loadContacts];
+    [self loadContactsFromCoreData];
 //    [self retrieveAllConversations];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[[DataSingleton sharedSingleton] background]]];
