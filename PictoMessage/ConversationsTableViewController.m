@@ -32,15 +32,7 @@
     NSArray *contactsWithAccounts;
     NSArray *contactsWithoutAccounts;
     UITableView *peopleTableView;
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-
-    }
-    return self;
+    UINib *_cellNib;
 }
 
 - (void)viewDidLoad
@@ -57,7 +49,7 @@
     [searchBar setPlaceholder:SEARCH_PLACEHOLDER_TEXT];
     [searchBar setBackgroundColor:[UIColor whiteColor]];
     
-    peopleTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [searchBar bottomLeftY], self.view.frame.size.width, self.view.frame.size.height - searchBar.frame.size.height)];
+    peopleTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(searchBar.frame), self.view.frame.size.width, self.view.frame.size.height - searchBar.frame.size.height)];
     [peopleTableView setDataSource:self];
     [peopleTableView setDelegate:self];
     [peopleTableView setBackgroundColor:[UIColor clearColor]];
@@ -133,20 +125,22 @@
     static NSString *CellIdentifier = @"Cell";
     AccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[AccountTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        NSArray *topLevelObjects = [[self cellNib] instantiateWithOwner:self options:nil];
+        cell = [topLevelObjects objectAtIndex:0];
+//        cell = [[AccountTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         [cell updateLayoutWithHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]];
     }
     if (indexPath.section == 0) {
     Person *p = [contactsWithAccounts objectAtIndex:indexPath.row];
     
     [cell setName:[p userName]];
-    [cell setProfileImg:[UIImage imageNamed:@"wolf.jpg"]];
+    [cell setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
     [cell updateData];
     } else {
         Person *p = [contactsWithoutAccounts objectAtIndex:indexPath.row];
         
         [cell setName:[p userName]];
-        [cell setProfileImg:[UIImage imageNamed:@"wolf.jpg"]];
+        [cell setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
         [cell updateData];
         
     }
@@ -179,6 +173,13 @@
     [view addSubview:label];
     
     return view;
+}
+
+-(UINib *)cellNib {
+    if(!_cellNib) {
+        _cellNib = [UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]];
+    }
+    return _cellNib;
 }
 
 #pragma mark UITableViewDelegate

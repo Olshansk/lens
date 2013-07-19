@@ -46,7 +46,7 @@
     SignupPageOneViewController *s1 = [[SignupPageOneViewController alloc] init];
     
     
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:temp];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:s1];
 
 //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[self getRootViewController]];
 //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[[AccountCreationController alloc] init]];
@@ -57,7 +57,8 @@
 
     [self updateConversationsWithLaunchOptions:launchOptions];
     
-    [self.window setTintColor:[UIColor whiteColor]];
+    // This can't be white, since it makes the caret white.
+//    [self.window setTintColor:[UIColor whiteColor]];
     [self.window setRootViewController:navController];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
@@ -283,6 +284,16 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark Interface Orientations
+
+- (NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

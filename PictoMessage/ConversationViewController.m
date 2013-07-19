@@ -395,7 +395,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		exit(-1);
-	}
+	}//https://jellyfish-messenger.s3.amazonaws.com/pictures/ec5b9fa4556cadaba0203df47b72a56c
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {

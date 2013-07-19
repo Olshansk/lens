@@ -44,10 +44,12 @@
 		725E6DC817683D4100928F4B /* PersonalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725E6DC717683D4100928F4B /* PersonalSettingsViewController.m */; };
 		725E6DCE1769935E00928F4B /* PersonalSettingsDefs.h in Resources */ = {isa = PBXBuildFile; fileRef = 725E6DCD1769935E00928F4B /* PersonalSettingsDefs.h */; };
 		7291FBB7179391100041D66D /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7291FBB6179391100041D66D /* Message.m */; };
+		7291FBC317953A140041D66D /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7291FBC217953A140041D66D /* AccountTableViewCell.xib */; };
 		72AB3E3E17699E6E001907F0 /* wolf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72AB3E3D17699E6E001907F0 /* wolf.jpg */; };
 		72B01730176EB21B00B977E2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B0172D176EB21B00B977E2 /* Icon.png */; };
 		72B01731176EB21B00B977E2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B0172E176EB21B00B977E2 /* Icon@2x.png */; };
 		72B01732176EB21B00B977E2 /* Icon_120x120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72B0172F176EB21B00B977E2 /* Icon_120x120@2x.png */; };
+		72BDE7D91798BF6600D7D251 /* UIButton+FadeOnDisable.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BDE7D81798BF6600D7D251 /* UIButton+FadeOnDisable.m */; };
 		72CAE590175A826200ECCFF7 /* MessageEntryBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CAE588175A826200ECCFF7 /* MessageEntryBackground.png */; };
 		72CAE591175A826200ECCFF7 /* MessageEntryBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CAE589175A826200ECCFF7 /* MessageEntryBackground@2x.png */; };
 		72CAE592175A826200ECCFF7 /* MessageEntryInputField.png in Resources */ = {isa = PBXBuildFile; fileRef = 72CAE58A175A826200ECCFF7 /* MessageEntryInputField.png */; };
@@ -142,11 +144,14 @@
 		725E6DCD1769935E00928F4B /* PersonalSettingsDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalSettingsDefs.h; sourceTree = "<group>"; };
 		7291FBB5179391100041D66D /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		7291FBB6179391100041D66D /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		7291FBC217953A140041D66D /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		72A0B03F176D44350012B64D /* ConversationViewControllerDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationViewControllerDefs.h; sourceTree = "<group>"; };
 		72AB3E3D17699E6E001907F0 /* wolf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wolf.jpg; sourceTree = "<group>"; };
 		72B0172D176EB21B00B977E2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		72B0172E176EB21B00B977E2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		72B0172F176EB21B00B977E2 /* Icon_120x120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_120x120@2x.png"; sourceTree = "<group>"; };
+		72BDE7D71798BF6600D7D251 /* UIButton+FadeOnDisable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+FadeOnDisable.h"; sourceTree = "<group>"; };
+		72BDE7D81798BF6600D7D251 /* UIButton+FadeOnDisable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FadeOnDisable.m"; sourceTree = "<group>"; };
 		72CAE582175A810B00ECCFF7 /* HPGrowingTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
 		72CAE583175A810B00ECCFF7 /* HPGrowingTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
 		72CAE584175A810B00ECCFF7 /* HPTextViewInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
@@ -312,6 +317,7 @@
 				7224A9861753F3C4002ECDF6 /* MessageView.m */,
 				7204C4A6177670F100B01706 /* AccountTableViewCell.h */,
 				7204C4A7177670F100B01706 /* AccountTableViewCell.m */,
+				7291FBC217953A140041D66D /* AccountTableViewCell.xib */,
 				725E6DB91763E69200928F4B /* NetworkProtocol.h */,
 				725E6DBA1763E69200928F4B /* NetworkProtocol.m */,
 				725E6DCC1769932100928F4B /* User Settings */,
@@ -395,15 +401,17 @@
 			isa = PBXGroup;
 			children = (
 				72CAEA0D175C085100ECCFF7 /* NSURL+Parameters.h */,
+				72CAEA0E175C085100ECCFF7 /* NSURL+Parameters.m */,
 				7204C492177189EC00B01706 /* UIView+EasyDimensions.h */,
 				7204C493177189EC00B01706 /* UIView+EasyDimensions.m */,
-				72CAEA0E175C085100ECCFF7 /* NSURL+Parameters.m */,
 				7217832B176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.h */,
 				7217832C176D94E300995E2F /* NSMutableArray+SaveAndLoadCustomMutableArrays.m */,
 				72F5136817809BB000852A34 /* UIColor+ColorWIthHexString.h */,
 				72F5136917809BB000852A34 /* UIColor+ColorWIthHexString.m */,
 				72F5136B1780CE0A00852A34 /* NSArray+CoreDataArray.h */,
 				72F5136C1780CE0A00852A34 /* NSArray+CoreDataArray.m */,
+				72BDE7D71798BF6600D7D251 /* UIButton+FadeOnDisable.h */,
+				72BDE7D81798BF6600D7D251 /* UIButton+FadeOnDisable.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -514,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7222BC8D1753EF4100F163AC /* InfoPlist.strings in Resources */,
+				7291FBC317953A140041D66D /* AccountTableViewCell.xib in Resources */,
 				7222BC951753EF4100F163AC /* Default.png in Resources */,
 				7222BC971753EF4100F163AC /* Default@2x.png in Resources */,
 				7222BC991753EF4100F163AC /* Default-568h@2x.png in Resources */,
@@ -582,6 +591,7 @@
 				725E6DBB1763E69200928F4B /* NetworkProtocol.m in Sources */,
 				72F51317177FDABF00852A34 /* Email.m in Sources */,
 				725E6DBF17641EB400928F4B /* OpenUDID.m in Sources */,
+				72BDE7D91798BF6600D7D251 /* UIButton+FadeOnDisable.m in Sources */,
 				72F5135C17809A0000852A34 /* SignupPageTwoViewController.m in Sources */,
 				725E6DC217641EE900928F4B /* DataSingleton.m in Sources */,
 				7204C494177189EC00B01706 /* UIView+EasyDimensions.m in Sources */,

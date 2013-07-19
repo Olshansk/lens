@@ -11,8 +11,14 @@
 @interface AccountTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) UIImage *profileImg;
-@property (nonatomic, assign) BOOL isExistingAccount;
+@property (nonatomic, strong) UIImage *profilePhoto;
+//@property (nonatomic, assign) BOOL isExistingAccount;
+
+@property (nonatomic, weak) IBOutlet UIImageView *profilePhotoImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *actionIconImageView;
+
+@property (nonatomic, weak) IBOutlet UILabel *profileNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *actionLabel;
 
 -(void)updateLayoutWithHeight:(NSInteger)cellHeight;
 -(void)updateData;

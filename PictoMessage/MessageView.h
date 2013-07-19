@@ -10,7 +10,7 @@
 
 @interface MessageView : UITableViewCell
 
-- (void)setCellText:(NSString*)text withThumbnailImage:(UIImage*)image isFromMe:(bool)isFromMe;
+- (void)setCellText:(NSString*)text withThumbnailImage:(UIImage*)image isFromMe:(NSNumber*)isFromMe;
 + (CGFloat)getHeightForText:(NSString*)text withTotalWidth:(CGFloat)width;
 
 @end

@@ -40,7 +40,7 @@ static NSString* const isFirstSingletonLoadKey = @"isFirstSingletonLoad";
                 [sharedSingleton setOpenUDID:[OpenUDID value]];
                 NSLog(@"UDID: %@", [sharedSingleton openUDID]);
                 [sharedSingleton setBackground:@"Alamo.png"];
-                [sharedSingleton setPhoneNumber:@"4157355911"];//sam: 5195049672 ronen:4158252307 jordan:
+                [sharedSingleton setPhoneNumber:@"5195049672"];//sam: 5195049672 ronen:4158252307 jordan:
                 [sharedSingleton setProfilePhoto:[UIImage imageNamed:@"wolf.jpg"]];
                 [sharedSingleton setUserName:@"Daniel Olshansky"];
                 

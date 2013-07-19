@@ -5,6 +5,7 @@
 #define USERS_ROOT @"users"
 #define CHECK_PHONE_ROOT @"users/phone_number"
 #define CHECK_PHONES_ROOT @"users/list"
+#define VERIFY_USER_ROOT @"users/verify"
 
 //Convos
 #define CONVERSATION_ROOT @"conversations"
@@ -22,6 +23,8 @@
 #define MESSAGE_PHOTO_URL @"message[photo_url]"
 
 #define AUTH_TOKEN_PARAM @"auth_token"
+
+#define PHONE_CONFIRM_CODE_PARAM @"phone_confirm_code"
 
 #define PARAM_PHONE @"phone"
 

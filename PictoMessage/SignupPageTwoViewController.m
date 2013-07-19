@@ -8,6 +8,7 @@
 
 #import "SignupPageTwoViewController.h"
 #import "SignupPageThreeViewController.h"
+#import "UIButton+FadeOnDisable.h"
 #import "DataSingleton.h"
 
 #define PICKER_ANIMATION_DURATION 0
@@ -33,14 +34,20 @@
     UIImage *backgroundImage = [UIImage imageNamed:[[DataSingleton sharedSingleton] background]];
     [_backgroundView setImage:backgroundImage];
     
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    _phoneNumberTextField.leftView = paddingView;
+    _phoneNumberTextField.leftViewMode = UITextFieldViewModeAlways;
+    [_phoneNumberTextField setDelegate:self];
+    
+    [_continueButton setTitleAlpha:0.5f forState:UIControlStateDisabled];
+    [self updateWhetherContinueButtonEnabledFromPhoneNumberInput:_phoneNumberTextField.text];
+    
     _countryCodeDataArray = @[@"US +1", @"AB +2", @"CD +3", @"EF +4", @"GH +5"];
     
     [_pickerView setAlpha:0];
     [_pickerView setDataSource:self];
     [_pickerView setDelegate:self];
     _pickerIsVisible = NO;
-    
-    [_phoneNumberTextField setDelegate:self];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
     [_backgroundView setUserInteractionEnabled:YES];
@@ -49,6 +56,12 @@
 
 -(void)checkAndResignFirstResponder
 {
+    /*
+     Since Sam is not very smart, I will explciitly state that I am
+     resinging these first responders such that the keyboard is hidden
+     when the user taps the frikking background of the app when some 
+     textview in the view is a responder (ownder) of the fucking keyboard.
+     */
     if ([_phoneNumberTextField isFirstResponder]) {
         [_phoneNumberTextField resignFirstResponder];
     }
@@ -94,7 +107,15 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if ([[textField text] length] == 0) {
+    NSString *newString = [_phoneNumberTextField.text stringByReplacingCharactersInRange:range withString:string];
+    [self updateWhetherContinueButtonEnabledFromPhoneNumberInput:newString];
+    
+    return YES;
+}
+
+- (void)updateWhetherContinueButtonEnabledFromPhoneNumberInput:(NSString *)input
+{
+    if ([input length] == 0) {
         [_continueButton setEnabled:NO];
     } else {
         [_continueButton setEnabled:YES];

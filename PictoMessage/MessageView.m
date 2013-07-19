@@ -15,6 +15,7 @@
 #define Y_MARGIN 10
 #define THUMBNAIL_SIZE 40.0f
 #define TEXT_INSET 10
+
 @implementation MessageView {
     
     UIImageView *thumbnailView;
@@ -43,16 +44,15 @@
 	return self;
 }
 
-- (void)setCellText:(NSString*)text withThumbnailImage:(UIImage*)image isFromMe:(bool)isFromMe
+- (void)setCellText:(NSString*)text withThumbnailImage:(UIImage*)image isFromMe:(NSNumber*)isFromMe
 {
     UIFont *font = [UIFont systemFontOfSize:FONT_SIZE];
     
-//    text = @"ASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDASASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDASASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDASASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDASASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDASASDASDASDKASDKJASDJKASHDJKSAHDKJASHDKJASHDKJASHKDJASHKDAKSJHDJKSAHJKDAS";
     CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(self.frame.size.width - X_MARGIN * 3 - THUMBNAIL_SIZE - TEXT_INSET * 2, 9999) lineBreakMode:NSLineBreakByWordWrapping];
 
     UIImage *bubbleImage;
     
-    if (isFromMe) {
+    if ([isFromMe boolValue]) {
         bubbleImage = [UIImage imageNamed:@"BlueBubble.png"];
         [thumbnailView setFrame:CGRectMake(self.frame.size.width - X_MARGIN - THUMBNAIL_SIZE, Y_MARGIN , THUMBNAIL_SIZE, THUMBNAIL_SIZE)];
         [textBubble setFrame:CGRectMake(self.frame.size.width - X_MARGIN * 2 - THUMBNAIL_SIZE - size.width - TEXT_INSET * 2, Y_MARGIN, size.width + TEXT_INSET * 2, fmin(bubbleImage.size.height, size.height) + TEXT_INSET * 2)];
